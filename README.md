@@ -1,31 +1,23 @@
 # CCTween 函数库
+         
+        博客地址
+        http://www.cnblogs.com/mdrs/p/5107967.html
 
-#------------ 这是使用的一些变量 以及类型　-------------------------
+//------------ 这是使用的一些变量 以及类型　-------------------------
 
-　  public Transform MyTransform;　　public Text text;
+　  public Transform MyTransform;
+　  public Text text;
 　　
-　　public Image image;   　　       public Transform[] Bezier;
+　　public Image image;  　　       
+　　public Transform[] Bezier;
 　　
-　　RectTransform rectTransform;　　 public RectTransform[] UIBezier;
+　　RectTransform rectTransform; 
+　　public RectTransform[] UIBezier;
 　　
 
-#-----------------上边 变量 类型------------------------------
+//-----------------上边 变量 类型------------------------------
 
-#---------------------------这段是效果图的代码--------------------------------------------
-　　　　//text.UIMove(new Vector2(-300, 0), new Vector2(300, 0), 4f);
-　　　　//text.transform.Scale(new Vector3(1, 1, 1), new Vector3(0.2f, .2f, .2f),2f).SetComplete = () => {
-　　　　// text.transform.ScaleTo(new Vector3(1, 1, 1), 4f);
-　　　　//};
-　　　　//text.transform.Rotation(new Vector3(0, 0, 0), new Vector3(0, 0, 180), 3f).SetComplete = () => {
-　　　　// text.transform.RotationTo(new Vector3(0, 0, 30), 3f);
-　　　　//};
-　　　　//text.UIAlpha(1, 0.2f, 1f).SetComplete = () => { text.UIAlpha(1f, 1f); };
-　　　　//text.UIBezierMove(UIBezier, 2f);
 
-#-----------------------------看上边 上边-----------------------------------------
-
-　　　　// CCTween 函数库
-　　
         // 缩放  开始目标  结束目标  持续时间
         MyTransform.Scale(new Vector3(1, 1, 1), new Vector3(0, 0, 0), 2f);
         // 缩放至 目标值  需要的时间
