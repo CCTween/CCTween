@@ -13,37 +13,37 @@ using UnityEngine.UI;
 public class Typewriting : MonoBehaviour
 {
 
-    public Text text;
+    public Text  typing;
     public AudioClip audio;
 
-    public Text text2;
-    public Image image;
+    public Text textMove;
+    public Image imageMove;
 	void Start ()
 	{
 
-	    dazi("可以实现打字效果吗？ \n 很好奇的样子 \n 试试看吧 \n 你看效果还可以吧", 3f);
+	    dazi("可以实现打字效果吗？ \n 很好奇的样子 \n 试试看吧 \n 你看效果还可以吧 \n This is typing", 3f);
 	}
 
     public void dazi(string content, float time)
     {
-        text.Typewriting(content, time, audio).SetComplete = () => { CCFunction.Delay(this, () => { Move(); imageMove(); }, 0.5f); };
+        typing.Typewriting(content, time, audio).SetComplete = () => { CCFunction.Delay(this, () => { Move(); ImageMove(); }, 0.5f); };
        
     }
 
     public void Move() {
-        text2.gameObject.SetActive(true);
-        CCAction action = text2.UIMove(new Vector2(-390, 160), new Vector2(390, 160), 5f);
-        action.SetComplete = () => { text2.UIMoveTo(new Vector2(0, 160), 4f).SetComplete = () => { Scale(new Vector3(1, 1, 1), new Vector3(0, 0, 0), 2f); }; };
+        textMove.gameObject.SetActive(true);
+        CCAction action = textMove.UIMove(new Vector2(-390, 160), new Vector2(390, 160), 5f);
+        action.SetComplete = () => { textMove.UIMoveTo(new Vector2(0, 160), 4f).SetComplete = () => { Scale(new Vector3(1, 1, 1), new Vector3(0, 0, 0), 2f); }; };
     }
     public void Scale(Vector3 start, Vector3 end, float time) {
-        text2.transform.Scale(start, end, time).SetComplete = () => { Scale(end, start, time); };
+        textMove.transform.Scale(start, end, time).SetComplete = () => { Scale(end, start, time); };
     }
-    public void imageMove() {
-        image.gameObject.SetActive(true);
-        CCAction action = image.UIMove(new Vector2(-390, -200), new Vector2(390, -200), 5);
-        action.SetComplete = () => { image.UIMoveTo(new Vector2(0, -200), 2f).SetComplete = () => { imageScale(new Vector3(1,1,1),new Vector3(0,0,0),2f); }; };
+    public void ImageMove() {
+        imageMove.gameObject.SetActive(true);
+        CCAction action = imageMove.UIMove(new Vector2(-390, -200), new Vector2(390, -200), 5);
+        action.SetComplete = () => { imageMove.UIMoveTo(new Vector2(0, -200), 2f).SetComplete = () => { imageScale(new Vector3(1,1,1),new Vector3(0,0,0),2f); }; };
     }
     public void imageScale(Vector3 start,Vector3 end,float time) {
-        image.transform.Scale(start, end, time).SetComplete = () => { imageScale(end, start, time); };
+        imageMove.transform.Scale(start, end, time).SetComplete = () => { imageScale(end, start, time); };
     }
 }

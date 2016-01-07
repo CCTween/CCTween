@@ -22,7 +22,7 @@ public class Move : MonoBehaviour
 	    CCAction action3 = null;
 
          action = target.UIMoveTo(new Vector3(300, 0), 3f);
-         action.SetComplete = () => { action1 = target.MoveToX(-300, 5f); };
+         action.SetComplete = () => { action1 = target.UIMoveToX(-300, 5f); };
 
 
         action3 = iamge.UIMoveTo(new Vector3(-300f, 150f), 3f);
