@@ -18,8 +18,17 @@ public class CCAction
     protected float _duration;
     /// <summary>
     /// 是否进行时间缩放
+    /// 
+    /// 注意 ：   这个是 全局 (CCActionMag.TimeScale) 时间缩放的影响 
+    ///           如果使用 将不会使用本身时间缩放
+    /// 
     /// </summary>
-    public bool isTimeScale = false;
+    public bool  isTimeScale = false;
+
+    /// <summary>
+    /// 本身时间缩放
+    /// </summary>
+    public float TimeScale = 1;
     /// <summary>
     /// 已使用时间
     /// </summary>
@@ -44,6 +53,10 @@ public class CCAction
 
     protected Action OnComplete;
 
+    public Transform GetTarget
+    {
+        get { return _target; }
+    }
     public Action SetComplete {
         set { OnComplete = value; }
     }
@@ -84,10 +97,12 @@ public class CCAction
             return;
         }
 
-       _firstTick = true;
-       _isEnd     = false;
-       _target    = node;
-       _elapsed   = 0;
+       _firstTick   = true;
+       _isEnd       = false;
+       _target      = node;
+       _elapsed     = 0;
+       isTimeScale  = false;
+       TimeScale    = 1;
     }
 
     protected virtual void start() {
@@ -103,7 +118,14 @@ public class CCAction
                 OnUpdate(0);
             _elapsed = dt;
         } else {
-            _elapsed += dt;
+            if (isTimeScale)
+            {
+                _elapsed += dt ;
+            }
+            else
+            {
+                _elapsed += dt * TimeScale;
+            }   
         }
         if(!_isEnd) {
 

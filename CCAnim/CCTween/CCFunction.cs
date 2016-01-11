@@ -1242,7 +1242,7 @@ public static class CCFunction {
     /// 
     /// 延时调用
     /// </summary>
-    public static CCDelay Delay(this Transform s, Action action, CCDelay.OnAction onAction, float time, params UnityEngine.Object[] _params)
+    public static CCDelay Delay(this Transform s, Action action, CCDelay.OnAction onAction, float time, params object[] _params)
     {
         CCDelay dela = Delay(s, action, time);
         dela.SetHandle(onAction, _params);

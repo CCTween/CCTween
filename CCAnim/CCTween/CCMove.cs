@@ -7,7 +7,7 @@
 //*********************************************************************
 using UnityEngine;
 using System.Collections;
-public class CCMove : CCActionTime
+public class CCMove : CCAction
 {
 
     protected Vector3 StartPos;
@@ -21,7 +21,7 @@ public class CCMove : CCActionTime
             StartPos    = startPos,
             EndPos      = endPos,
             _duration   = time,
-            Dictance    = (endPos - startPos)/time
+            Dictance    = (endPos - startPos)
         };
     }
     protected override void StartRun()
@@ -31,7 +31,7 @@ public class CCMove : CCActionTime
 
     protected override void OnUpdate(float ratio)
     {
-        _target.position += Dictance * ratio;
+        _target.position = StartPos + Dictance * ratio;
     }
 
     protected override void EndRun()

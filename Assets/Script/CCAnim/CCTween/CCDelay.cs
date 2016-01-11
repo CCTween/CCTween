@@ -16,18 +16,18 @@ public class CCDelay : CCAction {
     {
         return new CCDelay
         {
-            MyAction = action,
+            MyAction  = action,
             _duration = time
         };
     }
-    public delegate void OnAction(Transform tr, params UnityEngine.Object[] obj);
+    public delegate void OnAction(Transform tr, params object[] obj);
 
     private  OnAction MyOnAction; 
-    private UnityEngine.Object[] Params { get; set; }
+    private  object[] Params { get; set; }
 
 
     public Action MyAction;
-    public void SetHandle(OnAction onAction, params UnityEngine.Object[] _params)
+    public void SetHandle(OnAction onAction, params object[] _params)
     {
         MyOnAction  = onAction;
         Params      = _params;

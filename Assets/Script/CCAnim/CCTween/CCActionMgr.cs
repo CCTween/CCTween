@@ -91,4 +91,60 @@ public class CCActionMgr
             Actions.Add(transform,new List<CCAction> { action });
         }
     }
+
+
+    /// <summary>
+    ///  设置全局的时间缩放
+    /// 
+    /// 注意 ：  使用了此选项 可能会用为对象本身的时间缩放 而导致错误
+    /// </summary>
+    /// <param name="scale"></param>
+    public void SetGlobalTimeScale(float scale)
+    {
+        TimeScale = scale;
+    }
+
+    /// <summary>
+    /// 设置全部时间缩放
+    /// </summary>
+    /// <param name="scale"></param>
+    public void SetTimeScale( float scale)
+    {
+        for(int i = 0; i < actionList.Count; i++)
+        {
+            actionList[i].TimeScale = scale;
+        }
+    }
+
+    /// <summary>
+    /// 设置 时间缩放 
+    /// </summary>
+    /// <param name="exclude">需要排除的</param>
+    /// <param name="scale"></param>
+    public void SetTimeScale(Transform exclude, float scale)
+    {
+        for(int i = 0; i < actionList.Count; i++)
+        {
+            if(actionList[i].GetTarget == exclude)
+                continue;
+
+            actionList[i].TimeScale = scale;
+        }
+    }
+
+    /// <summary>
+    /// 设置部分 时间缩放
+    /// </summary>
+    /// <param name="exclued"></param>
+    /// <param name="scale"></param>
+    public void SetPartScale(Transform[] exclued, float scale)
+    {
+        for (int i = 0; i < exclued.Length; i++)
+        {
+            CCAction action = actionList.Find(x => x.GetTarget == exclued[i]);
+            action.TimeScale = scale;
+        }
+      
+    }
+
 }
