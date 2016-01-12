@@ -169,7 +169,7 @@ public class CCBezier: CCAction
     }
     List<Vector3> v3 = null;
 
-    public Vector2 GetV3Bezies(Vector3[] p, float t) {
+    public Vector3 GetV3Bezies(Vector3[] p, float t) {
 
         if(v3 == null || v3.Count == 1) {
             if(v3 == null) {

@@ -22,12 +22,11 @@ public class CCTweenBezierEditor : Editor
     }
 
     public override void OnInspectorGUI()
-    {
-
-        bezier.length     = EditorGUILayout.IntField("坐标数量 ：", bezier.length);
+    {     
         bezier.Duration   = EditorGUILayout.FloatField("动画时间 :", bezier.Duration);
         bezier.usingPos   = EditorGUILayout.Toggle("使用坐标 ：", bezier.usingPos);
         bezier.IsStartRun = EditorGUILayout.Toggle("开始运行", bezier.IsStartRun);
+        bezier.length     = EditorGUILayout.IntField("坐标数量 ：", bezier.length);
         showPosition      = EditorGUILayout.Foldout(showPosition,"坐标数组 ：");
         if(!showPosition)
             return;
@@ -100,8 +99,6 @@ public class CCTweenBezierEditor : Editor
                 }
             }
         }
-
-
 
         if(bezier.isV2)
         {

@@ -39,14 +39,18 @@ public class CCTweenBezier : CCTweener
 
     public override void CCAwake()
     {
+        if (isV2)
+            rectTransform = (RectTransform) myTransform;
+
         if (!usingPos)
         {
             V2Pos.Clear();
             V3Pos.Clear();
+            
             if (isV2)
             {
                 for (int i = 0; i < T3Pos.Count; i++)
-                    V2Pos.Add(T3Pos[i].position);
+                    V2Pos.Add((( RectTransform )T3Pos[i]).anchoredPosition);
             }
             else
             {
@@ -71,10 +75,10 @@ public class CCTweenBezier : CCTweener
         {
             switch(style)
             {
-                case Style.Once:        One     (V3   ); break;
-                case Style.Loop:        Loop    (V3   ); break;
-                case Style.Repeatedly:  One     (Re3()); break;
-                case Style.PingPong:    PingPong(V3   ); break;
+                case Style.Once:        One3     (V3   ); break;
+                case Style.Loop:        Loop3    (V3   ); break;
+                case Style.Repeatedly:  One3     (Re3()); break;
+                case Style.PingPong:    PingPong3(V3   ); break;
             }
         }
     }
@@ -110,24 +114,24 @@ public class CCTweenBezier : CCTweener
             Loop(p);
         };
     }
-    void One(Vector3[] pos)
+    void One3(Vector3[] pos)
     {
         myTransform.BezierMove(pos, Duration);
     }
 
-    void Loop(Vector3[] pos)
+    void Loop3(Vector3[] pos)
     {
-        myTransform.BezierMove(pos, Duration).SetComplete = () => { Loop(pos); };
+        myTransform.BezierMove(pos, Duration).SetComplete = () => { Loop3(pos); };
     }
 
-    void PingPong(Vector3[] pos)
+    void PingPong3(Vector3[] pos)
     {
      
         myTransform.BezierMove(pos, Duration).SetComplete = () =>
         {
             Vector3[] p = pos;
             Array.Reverse(p);
-            Loop(p);
+            Loop3(p);
         };
     }
 
@@ -143,6 +147,7 @@ public class CCTweenBezier : CCTweener
     {
         if(isV2) V2 = Re2();
         else     V3 = Re3();
+
         StyleFunction();
     }
 
@@ -151,6 +156,10 @@ public class CCTweenBezier : CCTweener
         try
         {
             rectTransform = (RectTransform) myTransform;
+            if (rectTransform == null)
+            {
+                Debug.Log(" 未知错误");
+            }
             isV2 = true;
         }
         catch (Exception)

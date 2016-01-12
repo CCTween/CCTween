@@ -39,8 +39,8 @@ public class CCUIBezier : CCAction {
         {
 
             point2      = pos;
-            StartPos    = Vector2.zero;
-            Endpos      = Vector2.zero;
+            StartPos    = pos[0];
+            Endpos      = pos[pos.Length-1];
             ControlPos  = Vector2.zero;
             isArray     = true;
         }
@@ -59,7 +59,6 @@ public class CCUIBezier : CCAction {
         return new CCUIBezier {
             Config      = config,
             _duration   = duartion,
-
         };
     }
     private Vector2 tarpos = Vector2.zero;
@@ -75,7 +74,6 @@ public class CCUIBezier : CCAction {
     {
         if (Config.isArray)   tarpos = GetV2Bezies(Config.point2, ratio);
         else                  tarpos = GetV2Bezie(Config.StartPos, Config.ControlPos, Config.Endpos, ratio);
-
 
         myTransform.right = tarpos - myTransform.anchoredPosition;
         myTransform.anchoredPosition = tarpos;
@@ -112,13 +110,14 @@ public class CCUIBezier : CCAction {
         _bx2 = (1 - t) * _px2 + t * _px3;
         _by2 = (1 - t) * _py2 + t * _py3;
 
-        _cx = (1 - t) * _bx1 + t * _bx2;
-        _cy = (1 - t) * _by1 + t * _by2;
+        _cx  = (1 - t) * _bx1 + t * _bx2;
+        _cy  = (1 - t) * _by1 + t * _by2;
 
         return new Vector2(_cx, _cy);
     }
 
     List<Vector2> b = null;
+    Vector2 point=Vector2.zero;
     public Vector2 GetV2Bezies(Vector2[] p, float t)
     {
 
@@ -134,7 +133,8 @@ public class CCUIBezier : CCAction {
             {
                 b.Add(p[i]);
             }
-        } else if(b.Count >= 2)
+
+        } else if(b.Count > 1)
         {
             b.RemoveAt(0);
         }
@@ -157,8 +157,8 @@ public class CCUIBezier : CCAction {
         c2.y = GetPos(p1.y, p2.y, t);
         return c2;
     }
-    float GetPos(float p1, float p2, float t)
+    float GetPos(float d1, float d2, float t)
     {
-        return (1 - t) * p1 + t * p2;
+        return (1 - t) * d1 + t * d2;
     }
 }

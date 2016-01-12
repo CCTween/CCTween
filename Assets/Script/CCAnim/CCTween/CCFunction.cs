@@ -402,7 +402,7 @@ public static class CCFunction {
     {
         if(t == null)
         {
-            Debug.LogError("传入 MaskableGraphic 为空请检查 ");
+            Debug.LogError("传入 RectTransform 为空请检查 ");
             return null;
         }
         CCUIBezier action = CCUIBezier.Create(time, new CCUIBezier.BezierConfig(startPos, endPos));
@@ -421,7 +421,7 @@ public static class CCFunction {
     {
         if(t == null)
         {
-            Debug.LogError("传入 MaskableGraphic 为空请检查 ");
+            Debug.LogError("传入 RectTransform 为空请检查 ");
             return null;
         }
         CCUIBezier action = CCUIBezier.Create(time, new CCUIBezier.BezierConfig(startPos, endPos, controlPos));
@@ -441,7 +441,7 @@ public static class CCFunction {
     {
         if(t == null)
         {
-            Debug.LogError("传入 MaskableGraphic 为空请检查 ");
+            Debug.LogError("传入 RectTransform 为空请检查 ");
             return null;
         }
         CCUIBezier action = CCUIBezier.Create(time, new CCUIBezier.BezierConfig(pos));
