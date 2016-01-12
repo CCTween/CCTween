@@ -115,12 +115,12 @@
 
      image.UIAlpha(1, 0, 2f); 
 
-     // CCTween 的另一种使用方法 CCFunction   
+  
 
 #     // CCAction 可以设置回调参数  
 
      CCAction action=  CCFunction.Move("需要移动的物体", "开始坐标", "结束坐标", "持续时间");`  
-
+     // CCTween 的另一种使用方法 CCFunction   
      // 设置回调  
 
      action.SetComplete = () => { };  
