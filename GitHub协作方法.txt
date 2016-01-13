@@ -13,3 +13,24 @@
 7.提交本地代码到远程
 	git push --all
 8.输入帐号密码进行提交
+-------以上是在clone下代码库后的操作，clone代码库的操作自行百度-------
+-------              下面介绍push完成后的web端操作             -------
+1.合并分支
+	登录github web端，进入到自己fork的项目下，文件目录右上面有一个pull request点击进入
+	看到Comparing changes，下面有两个分支选择，左边为合并操作的受体，右边为合并操作的攻体
+	左边选择CCTween/CCTween base:master    右边选择你自己修改的分支XXX/CCTween compare dev
+		XXX为你的用户名
+	选择完合并分支和被合并的分支后，点击Create pull request
+	填写合并的log信息，再点击Create pull request
+	己方操作完成，等待管理员同意合并，若自己不想合并，可点击最后页面下方的Close pull request
+
+
+
+-------总体流程梳理-------
+1.在web端fork CCTween/CCTween 到自己的库下
+2.在本地clone XXX/CCTween 
+3.在本地开发分支中新建本次修改分支
+4.修改完后 添加，提交，最后push到web端
+5.在web端将自己本地新建的修改分支合并到CCTween/CCTween中的master中(pull request中提交合并请求)
+6.等待管理员确认合并
+-------            -------
