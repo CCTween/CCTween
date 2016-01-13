@@ -1,19 +1,35 @@
-#GitHub 协作方法
-1.在本地新建一个自己本次要修改的分支
-	git branch dev
-2.切换到修改分支
-	git checkout dev
-3.进行本次的修改
-4.修改玩后添加修改的文件并提交
-	git add .
-	git commit -m "log 信息"
-	注意此时一定要在自己新建的dev分支进行添加和提交
-5.更新最新远端的代码
-	git pull
-6.解决冲突
-7.提交本地代码到远程
-	git push --all
-8.输入帐号密码进行提交
+#GitHub 协作方法  
+
+1.在本地新建一个自己本次要修改的分支  
+
+	git branch dev  
+	
+2.切换到修改分支  
+
+	git checkout dev  
+	
+3.进行本次的修改  
+
+4.修改玩后添加修改的文件并提交  
+
+	git add .  
+	
+	git commit -m "log 信息"  
+	
+	注意此时一定要在自己新建的dev分支进行添加和提交  
+	
+5.更新最新远端的代码  
+
+	git pull  
+	
+6.解决冲突  
+
+7.提交本地代码到远程  
+
+	git push --all  
+	
+8.输入帐号密码进行提交  
+
 
 
 
